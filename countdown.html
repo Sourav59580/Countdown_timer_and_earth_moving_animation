@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: black;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .solar-system {
+            width: 800px;
+            height: 800px;
+            background-color: black;
+        }
+
+        .sun {
+            position: absolute;
+            margin: calc(400px - 60px) calc(400px - 60px);
+            display: block;
+            width: 120px;
+        }
+
+
+        .earth {
+            width: 50px;
+            top: 400px;
+            left: 100px;
+            animation: earth-rotation 10s infinite linear;
+            position: absolute;
+        }
+
+        .moon {
+            width: 15px;
+            top: calc(400px + 25px - 50px);
+            left: calc(100px + 25px - 50px);
+            animation: moon-revolution 10s infinite linear;
+            position: absolute;
+            transform-origin: 50px 50px;
+        }
+
+        .earth-orbit {
+            height: 100%;
+            animation: earth-revolution 365s infinite linear;
+
+        }
+
+        @keyframes earth-revolution {
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        @keyframes moon-revolution {
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        @keyframes earth-rotation {
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+
+        .earth-orbit {
+            background-position: center;
+            background-size: 575px;
+            background-repeat: no-repeat;
+        }
+
+        .days,
+        .hours,
+        .minutes,
+        .seconds {
+            width: 90px;
+            height: 50px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid d-flex flex-wrap">
+        <div class="solar-system" style="margin-top: -100px;">
+            <img class="sun" src="http://www.coding-dude.com/wp/wp-content/uploads/2016/06/sun.ico" alt="" />
+
+            <div class="earth-orbit line-orbit">
+                <div class="moon-orbit">
+                    <img class="moon" src="http://www.coding-dude.com/wp/wp-content/uploads/2016/06/moon.png"
+                        alt="the Moon" />
+
+                    <img class="earth"
+                        src="https://lh3.googleusercontent.com/proxy/9XZp0p3sY9tpzlf-WdJzKwPfA8VLX1GnEwqUJNnNV75axOShNY21rdmZ8SMVHcbvKzzL26qQ9aAaGY6y7ejIBvLn7GM5pQq3dp7chhS5p0DsG7hhbspK_0XOsWE5ZboZXJYutA"
+                        alt="the Earth" />
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h2 class="text-light font-weight-bold mb-4">New Year Countdown</h2>
+            <div class='d-flex'>
+                <div class="d-flex flex-column text-center">
+                    <div class='days d-flex flex-column justify-content-center align-items-center ml-2'
+                        style="background-color: #FF1717;">
+                        <h3 class="day mt-2 text-light" style="font-family: 'Anton', sans-serif;">00</h3>
+                    </div>
+                    <h4 class="text-light mt-1" style="font-family: 'Anton', sans-serif;">Days</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <div class="hours ml-2 d-flex flex-column justify-content-center align-items-center"
+                        style="background-color: #1CC8FF;">
+                        <h3 class="hour text-light mt-2" style="font-family: 'Anton', sans-serif;">00</h3>
+                    </div>
+                    <h4 class="text-light mt-1" style="font-family: 'Anton', sans-serif;">Hours</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <div class="minutes ml-2 d-flex flex-column justify-content-center align-items-center"
+                        style="background-color: #02F237;">
+                        <h3 class="minute text-light mt-2" style="font-family: 'Anton', sans-serif;">00</h3>
+                    </div>
+                    <h4 class="text-light mt-1" style="font-family: 'Anton', sans-serif;">Minutes</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <div class="seconds ml-2 d-flex flex-column justify-content-center align-items-center"
+                        style="background-color: #FA1AA0;">
+                        <h3 class="second text-light mt-2" style="font-family: 'Anton', sans-serif;">00</h3>
+                    </div>
+                    <h4 class="text-light mt-1" style="font-family: 'Anton', sans-serif;">Seconds</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 1, 2021 15:37:25").getTime();
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+              
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+              
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              
+            // Output the result in an element
+            //document.getElementsByClassName("day").innerHTML(days);
+            $(".day").html(days);
+            $(".hour").html(hours);
+            $(".minute").html(minutes);
+            $(".second").html(seconds);
+            
+              
+            // If the count down is over, write some text 
+            if (distance < 0) {
+              clearInterval(x);
+            $(".day").html(00);
+            $(".hour").html(00);
+            $(".minute").html(00);
+            $(".second").html(00);
+            }
+          }, 1000);
+
+
+    </script>
+</body>
+
+</html>
